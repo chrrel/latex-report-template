@@ -1,0 +1,189 @@
+% ----------------------------------------------
+\chapter{Structure}\label{ch:figures}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis.
+
+% ############################################
+\section{Section}\label{sec:images}
+
+In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+
+\subsection{Subsection}
+
+Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero.
+
+\subsubsection{Subsubsection}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. 
+
+% ----------------------------------------------
+\chapter{Text Elements}
+
+% ############################################
+\section{New Commands}
+
+This template provides some new commands:
+
+You can add sources in image / listing captions (see \autoref{sec:images}), 
+
+You can create definitions or theorems (see \autoref{sec:maths}).
+
+You can format inline code in a paragraph (see \autoref{sec:code}).
+
+% ############################################
+\section{Acronyms and References}
+
+A popular acronym is \acs{LOL}. \acf{IMHO} is another one. 
+	
+Citations can have page numbers \cite[p. 473]{smi:60}, \cite[pp. 359 - 360]{doe:16}, but they can be left out as well \cite{wai:99}, \cite{mus:16}, \cite{wri:81}, \cite{stu:89}.
+
+You can also add footnotes.\footnote{It is displayed at the bottom of the page.}
+
+\pagebreak
+
+% ############################################
+\section{Lists}
+
+Unordered Lists:
+\begin{itemize}
+\item This is an unordered list. 
+\item Item 2.
+\item It has three items.
+\end{itemize}
+
+Ordered List:
+\begin{enumerate}
+\item This is an ordered list.
+\item Item 2.
+\item It has three items.
+\end{enumerate}
+
+Ordered List (alphabetical):
+\begin{enumerate}[label=\Alph*.]
+\item This is an ordered list.
+\item Item 2.
+\item It has three items.
+\end{enumerate}
+
+% ----------------------------------------------
+\chapter{Figures}\label{ch:figures}
+
+% ############################################
+\section{Images}\label{sec:images}
+
+\autoref{fig:image1} shows how to display images.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{example-image-a.pdf}
+    \caption{Image}
+
+	\label{fig:image1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{example-image-b.pdf}
+    \caption{Image with Source}
+    \captionsource{\cite{mus:16}}	
+	\label{fig:image2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{example-image-c.pdf}
+    \caption{Image with Source and Link}
+    \captionsource[https://example.org]{J. Doe}	
+	\label{fig:image3}
+\end{figure}
+
+% ############################################
+\section{Diagrams}
+\subsection{Sequence Diagram}
+\begin{figure}[H]
+	\centering
+	\begin{sequencediagram}
+		\newthread{a}{a: Client}
+		\newinst[2]{b}{b: Server 1}
+		\newinst[2]{c}{c: Server 2}
+		\newinst[2]{d}{d: Database}
+
+		\begin{call}{a}{request}{b}{response}
+		\begin{call}{b}{forward}{c}{post processing}
+		\begin{call}{c}{request data}{d}{data conversion}
+		\end{call}
+		\end{call}
+		\end{call}
+	\end{sequencediagram}
+	\caption{Sequence Diagram}
+	\label{fig:sequence}
+\end{figure}
+
+\subsection{Flow Diagram}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[node distance=1.6cm]
+	\node (start) [startstop] {Start};
+	\node (in1) [io, below of=start] {Input 1};
+	\node (pro1) [process, below of=in1] {Do something};
+	\node (com1) [comment, below of=in1, xshift=-4cm] {STEP 1};
+	\node (in2) [io, below of=in1, xshift=5cm] {Input 2};
+	\node (sub1) [subprocess, below of=pro1] {\nodepart{two} Subprogram};
+	\node (dec1) [decision, below of=sub1, yshift=-1cm] {Decision};
+	\node (com1) [comment, below of=dec1, xshift=-4cm, yshift=-1cm] {STEP 2};
+	\node (stop) [startstop, below of=dec1, yshift=-1cm] {Stop};
+
+	\draw [arrow] (dec1.west) -- ++(-1,0) node[anchor=south,pos=0.5] {No} |- (sub1.west);
+	\draw [arrow] (dec1) -- node[anchor=west] {Yes} (stop);
+
+	\draw [arrow] (start) -- (in1);
+	\draw [arrow] (in1) -- (pro1);
+	\draw [arrow] (pro1) -- (sub1);
+	\draw [arrow] (sub1) -- (dec1);
+	\draw [arrow] (in2) -- (pro1);
+
+
+	\end{tikzpicture}
+	\caption{Flow Diagram}
+	\captionsource{\cite{mus:16}}
+	\label{fig:flow}
+\end{figure}
+
+% ----------------------------------------------
+\chapter{Conclusion}\label{ch:conclusion}
+
+% ############################################
+\section{Mathematics}\label{sec:maths}
+
+\subsection{Definitions}
+
+\begin{define}	
+A function $f: X \rightarrow Y$ is injective if and only if for all $x_1, x_2 \in X$, $x_1 \neq x_2$ implies $f(x_1) \neq f(x_2)$.
+\end{define}
+
+\subsection{Formulas}
+
+Formulas can be included inline, e.g. $K_E^{CID}$ to $S$ or as an own block.
+$$ otp = f_k(i, k), \qquad i = 1, ..., n $$
+
+\pagebreak
+% ############################################
+\section{Code Listings}\label{sec:code}
+
+Code can be displayed inline, e.g. \code{UPDATE} or \code{factorial(n)}.
+
+Code listings can have numbered lines, captions, syntax highlighting, ... .
+
+\begin{lstlisting}[caption={[Code Without Line Numbers] Code Without Line Numbers \\ \captionsource{\cite{mus:16}}}, label={lst:codeExample}, language=python, numbers=none]
+ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 
+ A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Code With Line Numbers}, label={lst:factorial}, language=Java]
+public int factorial(int n) {
+	if (n == 1) {
+		return 1;
+	} else {
+		return n * factorial(n - 1) ;
+	}
+}
+\end{lstlisting}

@@ -1,0 +1,310 @@
+\documentclass[12pt, a4paper, final]{report}
+
+\newcommand{\isPrintVersion}{false}						% false -> show colored links, true -> all links in black
+
+\usepackage[utf8]{inputenc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Data  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\thesisTitle}{Analysis of Alien Life Forms and Their Relationship to Cats in Television Series}
+\newcommand{\authorName}{Gordon Shumway}
+\newcommand{\thesisDate}{$19^{th}$ Januar 2038}
+\newcommand{\signatureDate}{19. Januar 2038}
+\newcommand{\city}{Los Angeles}
+
+%%%%% Title page
+\newcommand{\reportType}{Project Report}
+\newcommand{\courseOfStudies}{Applied Unicorn Science}
+\newcommand{\university}{Andromeda University of Melmac}
+
+\newcommand{\timeOfProject}{01/1970 -- 01/2038}
+\newcommand{\studentId}{1234567}
+\newcommand{\course}{XYZ1234}
+\newcommand{\company}{MyCompany}
+\newcommand{\supervisorName}{William Tanner}
+
+\newcommand{\byTitle}{by}
+\newcommand{\courseOfStudiesTitle}{Course of Studies}
+\newcommand{\timeOfProjectTitle}{Time of Project}
+\newcommand{\studentIdTitle}{Student Number}
+\newcommand{\courseTitle}{Course}
+\newcommand{\companyTitle}{Company}
+\newcommand{\supervisorTitle}{Supervisor}
+
+\newcommand{\universityLogo}{example-image-16x9.pdf}
+\newcommand{\companyLogo}{example-image-16x9.pdf}
+
+%%%%% Quote
+\newcommand{\quoteText}{Designed to make a difference.}
+\newcommand{\quoteAuthor}{The Minus Sign}
+\newcommand{\quoteSource}{A Funny Algebra Book}
+
+%%%%% Declaration
+\newcommand{\declaration}{Ich versichere hiermit, dass ich meine Projektarbeit mit dem Thema \textit{\thesisTitle} \linebreak selbstständig verfasst und keine anderen als die angegebenen Quellen und \linebreak Hilfsmittel benutzt habe.}
+
+\newcommand{\declarationTitle}{Ehrenwörtliche Erklärung}
+\newcommand{\ListOfFiguresTitle}{List of Figures}
+\newcommand{\ListOfAbbreviationsTitle}{List of Abbreviations}
+\newcommand{\ListOfListingsTitle}{List of Listings}
+
+%%%%% Document
+\title{\thesisTitle}
+\author{\authorName}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Abstract  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{abstract}
+\renewcommand{\abstractnamefont}{\large\bfseries}
+
+\newcommand{\abstractText}{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, vulputate eget, arcu.
+
+In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, feugiat a, tellus.
+
+Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adip leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales.
+}
+
+\newcommand{\abstractGermanText}{Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen. Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man nennt diese Sätze Pangrams. Sehr bekannt ist dieser: The quick brown fox jumps over the lazy old dog.
+
+ Oft werden in Typoblindtexte auch fremdsprachige Satzteile eingebaut (AVAIL® and Wefox™ are testing aussi la Kerning), um die Wirkung in anderen Sprachen zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus. Quod erat demonstrandum. Seit 1975 fehlen in den meisten Testtexten die Zahlen, weswegen ab dem Jahr 2034 Zahlen in 86 der Texte zur Pflicht werden.
+
+Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in sind mittlerweile auch Âçcèñtë, die in neueren Schriften aber fast immer enthalten sind. Ein wichtiges aber schwierig zu integrierendes Feld sind OpenType-Funktionalitäten. Je nach Software und Voreinstellungen können eingebaute Kapitälchen, Kerning oder Ligaturen (sehr pfiffig) nicht richtig dargestellt werden.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[left=3.5cm,right=2.5cm,top=3cm,bottom=2.5cm]{geometry}
+\usepackage[ngerman,english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage[bottom]{footmisc} 							% stick footnotes to bottom of the page
+\usepackage[printonlyused]{acronym}
+\usepackage{appendix}
+\usepackage{pdfpages}								% include PDF files
+\usepackage{ifthen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Colors  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{darkBlue}{HTML}{043562}
+\definecolor{lightBlue}{HTML}{6699cc}
+\definecolor{darkRed}{HTML}{7F1913}
+\definecolor{darkGrey}{HTML}{111111}
+\definecolor{lightGrey}{HTML}{F5F7F9}
+\definecolor{magenta}{HTML}{B10059}
+\definecolor{gray75}{gray}{0.75}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New commands  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%%%%% Caption with sources
+\usepackage{caption}
+\captionsetup{justification=centering}
+\newcommand{\captionsource}[2][]{
+	\ifthenelse{\equal{#1}{}}
+		{\small\textit{Source: #2}} % if empty
+		{\small\textit{Source: #2, \href{#1}{#1}} % else
+	}
+}
+
+%%%%% Theorems / Definitions
+\usepackage{amsthm} 					
+\newtheorem{define}{Definition}
+
+%%%%% Code in text
+\newcommand{\code}[1]{{\ttfamily#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[backend=bibtex,style=numeric,citestyle=numeric]{biblatex}
+\bibliography{bibliography} 
+
+% linebreaks in bibliography urls
+\usepackage{url}
+\usepackage{breakurl}
+\def\UrlBreaks{\do\/\do-}							% add a breakpoint at - and /
+
+\setcounter{biburlnumpenalty}{1000}  						% add a breakpoint after all numbers
+\setcounter{biburlucpenalty}{1000}						% add a breakpoint after all uppercase letters
+\setcounter{biburllcpenalty}{1000}   						% add a breakpoint after all lowercase letters
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PDF settings  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[pdftitle={\thesisTitle}, pdfauthor={\authorName},pdfsubject={\thesisTitle}, pdfcreator={pdflatex}, pdfpagemode=UseOutlines, pdfdisplaydoctitle=true, pdflang={en}, breaklinks]{hyperref}
+
+% color settings for links in pdf
+\ifthenelse{\equal{\isPrintVersion}{true}}
+{ % print version
+	\hypersetup{
+		hidelinks=true,
+		colorlinks=false, 
+		linktocpage=true, 						% page numbers are clickable
+		bookmarksnumbered=true 						% show heading numbering in pdf table of contents
+	}
+}{ % screen version
+	\hypersetup{
+		colorlinks=true, 
+		linkcolor=darkBlue,
+		citecolor=darkBlue,
+		filecolor=darkBlue,
+		menucolor=darkBlue,
+		urlcolor=darkBlue,
+		linktocpage=true, 						% page numbers are clickable
+		bookmarksnumbered=true 						% show heading numbering in pdf table of contents
+	}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Typography  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{lmodern}
+\usepackage{mathpazo}
+\fontfamily{ppl}\selectfont
+
+\setlength{\parskip}{8pt}							% after paragraph
+\setlength{\parindent}{0pt}							% new paragraph indent
+\renewcommand{\baselinestretch}{1.2}\normalsize					% line height (line height for content is defined in line 281)
+
+% Prevent widows and orphans
+\clubpenalty = 10000								% prevent orphans
+\widowpenalty = 10000 								% prevent widows
+\displaywidowpenalty=10000
+
+% Chapter title
+\usepackage{titlesec}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries\color{darkRed}}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Listings  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+
+\lstset{
+	language=Java,								% default language
+	numbers=left,								% line number position, alternative: none
+	stepnumber=1,								 
+	numbersep=6pt,								% distance between line number and code
+	numberstyle=\fontsize{9pt}{9pt}\ttfamily,				% line number style
+	breaklines=true,							% break lines if necessary
+	breakautoindent=true,							% indent after line break
+	postbreak=\space,							% break at space
+	tabsize=4,								% tab size
+	showspaces=false,							% do not show spaces in code
+	showstringspaces=false,							% do not show spaces in strings
+	extendedchars=true,							% use Latin1
+	captionpos=b,								% caption position
+	backgroundcolor=\color{lightGrey}, 					% background color
+	xleftmargin=0pt,								
+	xrightmargin=0pt,							
+	frame=leftline,								% draw frame ar left side only
+	framerule=1.1pt,							% frame width
+	frameround=ffff,							% round corners: f = not rounded | t = rounded
+	rulecolor=\color{lightBlue},						% frame color
+	framesep=1.5pt,								% distance between line number and border 
+	fillcolor=\color{lightGrey},
+	basicstyle=\ttfamily\footnotesize\color{darkGrey},	
+	keywordstyle=\color{magenta}\bfseries,
+	identifierstyle=,
+	commentstyle=\color{lightBlue},
+	stringstyle=\color{darkBlue}
+}
+
+\lstloadlanguages{bash, C, C++, HTML, Java, PHP, Python, SQL}
+
+% change heading above listings to \ListOfListingsTitle
+\renewcommand{\lstlistlistingname}{\ListOfListingsTitle}
+
+% Group list of listings by chapter
+\let\Chapter\chapter
+\def\chapter{\addtocontents{lol}{\protect\addvspace{10pt}}\Chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Diagrams  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,shadows}
+% flow diagrams
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=0.9cm,text centered, draw=lightBlue, fill=lightGrey]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=0.9cm, text centered, draw=lightBlue, fill=lightGrey]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=0.9cm, text centered, text width=3cm, draw=lightBlue, fill=lightGrey]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=0.9cm, text centered, draw=lightBlue, fill=lightGrey]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{comment} = [rectangle, minimum width=1cm, minimum height=0.9cm, text centered, text width=3cm, draw=none, fill=none]
+\tikzstyle{subprocess} = [rectangle split, rectangle split horizontal, rectangle split parts=3, minimum height=0.9cm, minimum width=3cm, draw=lightBlue, fill=lightGrey]
+
+% sequence diagrams
+\usepackage[underline=false]{pgf-umlsd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Todo Comments  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[colorinlistoftodos]{todonotes}
+\reversemarginpar
+\setlength{\marginparwidth}{3cm}
+
+\newcommand{\todoQuestion}[1]{\todo[color=green!40]{#1}}
+\newcommand{\todoImportant}[1]{\todo[color=red!60]{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Structure  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	\setlength{\headheight}{24.7pt}						% minimum height required by Latexmk
+	\pagenumbering{Roman}
+
+%%%%% Title page, quote, declaration, abstract 
+	\fancypagestyle{plain}{ 						% no header, no footer
+		\fancyhf{} 
+		\fancyfoot{}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+	}	
+	\input{addons}
+
+%%%%% Table of Contents
+	\setlength{\parskip}{0pt}						% after paragraph
+	\setcounter{tocdepth}{2}						% depth of table of contents
+	\tableofcontents
+	\thispagestyle{empty}
+		
+%%%%% Figures, Tables, Listings	
+	\fancypagestyle{plain}{ 
+		\fancyhf{} 
+		\fancyfoot[R]{\thepage}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+	}	
+	\addtocounter{page}{4}							% increase page number: +4
+	\input{acronyms}
+	\addcontentsline{toc}{chapter}{\ListOfAbbreviationsTitle}		
+
+	\listoffigures
+	\addcontentsline{toc}{chapter}{\ListOfFiguresTitle}	
+
+	%\cleardoublepage
+	%\listoftables
+	
+	\lstlistoflistings
+	\addcontentsline{toc}{chapter}{\ListOfListingsTitle}
+
+	\cleardoublepage
+
+%%%%% Content
+	\pagenumbering{arabic}
+	\setlength{\parskip}{8pt}						% after paragraph
+	\renewcommand{\baselinestretch}{1.4}\normalsize				% line height 
+	
+	\pagestyle{fancy}
+	\fancyhf{}
+	\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+	\lhead{}
+	\rhead{\thechapter  \ -- \ \nouppercase\leftmark}
+	\rfoot{\thepage}
+	\input{content}
+	\clearpage
+
+%%%%% Bibliography
+	\rhead{\nouppercase\leftmark}
+	\printbibliography[heading=bibintoc]
+	\clearpage
+%%%%% Appendix
+	\rhead{A  \ -- \ \nouppercase\leftmark}
+	\input{appendix}
+\end{document}

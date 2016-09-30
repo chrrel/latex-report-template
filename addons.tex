@@ -1,0 +1,59 @@
+\begin{titlepage}
+	\includegraphics[width=4cm]{\companyLogo}
+	\hfill
+	\includegraphics[width=4cm]{\universityLogo}
+	\centering
+	
+	{\large \ \par}
+	{\scshape\LARGE \reportType \par}	
+	\vspace{1.5cm}
+	{\huge\bfseries \thesisTitle \par}
+	\vspace{1.5cm}
+	{\large \courseOfStudies \\ at \university \par}
+	\vspace{1cm}
+	{\large \byTitle \par}
+	{\Large\itshape \authorName \par}
+	\vfill
+	{\large \thesisDate \par}
+	\vfill
+	\begin{tabbing}
+		mmmmmmmmmmmmmmmmmmmmmmmmmm			\= \kill 			% define width
+		\textbf{\timeOfProjectTitle}			\> \timeOfProject \\
+		\textbf{\studentIdTitle, \ \courseTitle}	\> \studentId, \ \course\\
+		\textbf{\companyTitle}				\> \company \\
+		\textbf{\supervisorTitle}			\> \supervisorName
+	\end{tabbing}
+\end{titlepage}
+
+% ############################################
+\begin{titlepage}
+	\noindent
+	\begin{minipage}[c][\textheight][c]{\textwidth}
+		\centering	
+		\textbf{\textit{\quoteText}} \linebreak
+		--- \textsc{\quoteAuthor}, \ \textit{\quoteSource}
+	\end{minipage}
+\end{titlepage}
+
+% ############################################
+\chapter*{\declarationTitle}
+\declaration
+\vspace{4em}
+
+\begin{tabbing}
+	mmmmmmmmmmmmmmmmmm	\= \kill 	% define width
+	\city, \ \signatureDate 	\> \rule{6cm}{0.4pt} \\
+				\> \authorName
+\end{tabbing}
+
+% ############################################
+\begin{otherlanguage}{ngerman} 
+\begin{abstract}
+	\abstractGermanText
+\end{abstract}
+\end{otherlanguage}
+
+% ############################################
+\begin{abstract}
+	\abstractText
+\end{abstract}

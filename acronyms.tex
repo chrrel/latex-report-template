@@ -1,0 +1,17 @@
+% only used acronyms are displayed
+% \ac{LOL}  -> First time: Laughing Out Loud (LOL), Else: LOL
+% \acs{LOL} -> LOL
+% \acf{LOL} -> Laughing Out Loud (LOL)
+% \acs{LOL} -> Laughing Out Loud
+% \acp{LOL} -> LOLs
+% documentation: https://www.ctan.org/pkg/acronym
+
+\chapter*{List of Abbreviations}
+
+\begin{acronym}[AABBCCD]  			% define width of left column 
+\setlength{\itemsep}{-\parsep}			% define spacing between acronyms
+
+
+\acro{LOL}{Laughing Out Loud}
+\acro{IMHO}{In My Humble Opinion}
+\end{acronym}
