@@ -84,6 +84,7 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 \usepackage{appendix}
 \usepackage{pdfpages}								% include PDF files
 \usepackage{ifthen}
+\usepackage{csquotes}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Colors  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,11 +171,13 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 \widowpenalty = 10000 								% prevent widows
 \displaywidowpenalty=10000
 
-% Chapter title
+
 \usepackage{titlesec}
 \newcommand{\hsp}{\hspace{20pt}}
-\titleformat{\chapter}[hang]{\Huge\bfseries\color{darkRed}}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
 
+\titleformat{\chapter}[block]{\Huge\bfseries\color{darkRed}}{\thechapter \hsp \textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+\titleformat{\section}[block]{\Large\bfseries}{\thesection \ }{0pt}{\Large \bfseries}
+\titleformat{\subsection}[block]{\large\bfseries}{\thesubsection \ }{0pt}{\large \bfseries}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Listings  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{listings}
