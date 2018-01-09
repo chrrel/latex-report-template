@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper, final]{report}
+\documentclass[12pt, a4paper, final, twoside]{report}
 
 \newcommand{\isPrintVersion}{false}						% false -> show colored links, true -> all links in black
 
@@ -44,6 +44,7 @@
 \newcommand{\declarationTitle}{Ehrenwörtliche Erklärung}
 \newcommand{\ListOfFiguresTitle}{List of Figures}
 \newcommand{\ListOfAbbreviationsTitle}{List of Abbreviations}
+\newcommand{\ListOfTablesTitle}{List of Tables}
 \newcommand{\ListOfListingsTitle}{List of Listings}
 
 %%%%% Document
@@ -79,22 +80,21 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{fancyhdr}
-\usepackage[bottom]{footmisc} 							% stick footnotes to bottom of the page
+\usepackage[bottom]{footmisc}
 \usepackage[printonlyused]{acronym}
 \usepackage{appendix}
-\usepackage{pdfpages}								% include PDF files
+\usepackage{pdfpages}
 \usepackage{ifthen}
 \usepackage{csquotes}
+\usepackage{emptypage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Colors  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\definecolor{darkBlue}{HTML}{043562}
-\definecolor{lightBlue}{HTML}{6699cc}
-\definecolor{darkRed}{HTML}{7F1913}
-\definecolor{darkGrey}{HTML}{111111}
-\definecolor{lightGrey}{HTML}{F5F7F9}
-\definecolor{magenta}{HTML}{B10059}
-\definecolor{gray75}{gray}{0.75}
+\definecolor{darkBlue}{cmyk}{0.9592, 0.4592, 0, 0.6157} % {HTML}{043562}
+\definecolor{lightBlue}{cmyk}{0.5, 0.25, 0, 0.2} 		% {HTML}{6699cc}
+\definecolor{darkGrey}{cmyk}{0, 0, 0, 0.9333} 			% {HTML}{111111}
+\definecolor{lightGrey}{cmyk}{0.0164, 0.0082, 0, 0.0431}% {HTML}{F0F2F4}
+\definecolor{magenta}{cmyk}{0, 1, 0.4972, 0.3059}		% {HTML}{B10059}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New commands  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -126,9 +126,9 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 \usepackage{breakurl}
 \def\UrlBreaks{\do\/\do-}							% add a breakpoint at - and /
 
-\setcounter{biburlnumpenalty}{1000}  						% add a breakpoint after all numbers
-\setcounter{biburlucpenalty}{1000}						% add a breakpoint after all uppercase letters
-\setcounter{biburllcpenalty}{1000}   						% add a breakpoint after all lowercase letters
+\setcounter{biburlnumpenalty}{1000}  				% add a breakpoint after all numbers
+\setcounter{biburlucpenalty}{1000}					% add a breakpoint after all uppercase letters
+\setcounter{biburllcpenalty}{1000}   				% add a breakpoint after all lowercase letters
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PDF settings  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -140,7 +140,7 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 	\hypersetup{
 		hidelinks=true,
 		colorlinks=false, 
-		linktocpage=true, 						% page numbers are clickable
+		linktocpage=true, 							% page numbers are clickable
 		bookmarksnumbered=true 						% show heading numbering in pdf table of contents
 	}
 }{ % screen version
@@ -151,7 +151,7 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 		filecolor=darkBlue,
 		menucolor=darkBlue,
 		urlcolor=darkBlue,
-		linktocpage=true, 						% page numbers are clickable
+		linktocpage=true, 							% page numbers are clickable
 		bookmarksnumbered=true 						% show heading numbering in pdf table of contents
 	}
 }
@@ -164,7 +164,7 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 
 \setlength{\parskip}{8pt}							% after paragraph
 \setlength{\parindent}{0pt}							% new paragraph indent
-\renewcommand{\baselinestretch}{1.2}\normalsize					% line height (line height for content is defined in line 281)
+\renewcommand{\baselinestretch}{1.2}\normalsize		% line height (line height for content is defined in line 281)
 
 % Prevent widows and orphans
 \clubpenalty = 10000								% prevent orphans
@@ -187,22 +187,22 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 	numbers=left,								% line number position, alternative: none
 	stepnumber=1,								 
 	numbersep=6pt,								% distance between line number and code
-	numberstyle=\fontsize{9pt}{9pt}\ttfamily,				% line number style
+	numberstyle=\fontsize{9pt}{9pt}\ttfamily,	% line number style
 	breaklines=true,							% break lines if necessary
-	breakautoindent=true,							% indent after line break
+	breakautoindent=true,						% indent after line break
 	postbreak=\space,							% break at space
-	tabsize=4,								% tab size
+	tabsize=4,									% tab size
 	showspaces=false,							% do not show spaces in code
-	showstringspaces=false,							% do not show spaces in strings
+	showstringspaces=false,						% do not show spaces in strings
 	extendedchars=true,							% use Latin1
 	captionpos=b,								% caption position
-	backgroundcolor=\color{lightGrey}, 					% background color
+	backgroundcolor=\color{lightGrey}, 			% background color
 	xleftmargin=0pt,								
 	xrightmargin=0pt,							
 	frame=leftline,								% draw frame ar left side only
 	framerule=1.1pt,							% frame width
 	frameround=ffff,							% round corners: f = not rounded | t = rounded
-	rulecolor=\color{lightBlue},						% frame color
+	rulecolor=\color{lightBlue},				% frame color
 	framesep=1.5pt,								% distance between line number and border 
 	fillcolor=\color{lightGrey},
 	basicstyle=\ttfamily\footnotesize\color{darkGrey},	
@@ -249,7 +249,7 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Structure  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-	\setlength{\headheight}{24.7pt}						% minimum height required by Latexmk
+	\setlength{\headheight}{24.7pt}					% minimum height required by Latexmk
 	\pagenumbering{Roman}
 
 %%%%% Title page, quote, declaration, abstract 
@@ -270,11 +270,11 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 %%%%% Figures, Tables, Listings	
 	\fancypagestyle{plain}{ 
 		\fancyhf{} 
-		\fancyfoot[R]{\thepage}
+		\fancyfoot[LE,RO]{\thepage}
 		\renewcommand{\headrulewidth}{0pt}
 		\renewcommand{\footrulewidth}{0pt}
 	}	
-	\addtocounter{page}{4}							% increase page number: +4
+	\addtocounter{page}{6}							% increase page number: +6
 	\input{acronyms}
 	\addcontentsline{toc}{chapter}{\ListOfAbbreviationsTitle}		
 
@@ -282,7 +282,8 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 	\addcontentsline{toc}{chapter}{\ListOfFiguresTitle}	
 
 	%\cleardoublepage
-	%\listoftables
+	\listoftables
+	\addcontentsline{toc}{chapter}{\ListOfTablesTitle}	
 	
 	\lstlistoflistings
 	\addcontentsline{toc}{chapter}{\ListOfListingsTitle}
@@ -292,22 +293,21 @@ Nichteinhaltung wird mit bis zu 245 Euro oder 368 bestraft. Genauso wichtig in s
 %%%%% Content
 	\pagenumbering{arabic}
 	\setlength{\parskip}{8pt}						% after paragraph
-	\renewcommand{\baselinestretch}{1.4}\normalsize				% line height 
+	\renewcommand{\baselinestretch}{1.4}\normalsize	% line height 
 	
 	\pagestyle{fancy}
 	\fancyhf{}
 	\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-	\lhead{}
-	\rhead{\thechapter  \ -- \ \nouppercase\leftmark}
-	\rfoot{\thepage}
+	\fancyhead[LE,RO]{\thechapter  \ -- \ \nouppercase\leftmark}
+	\fancyfoot[LE,RO]{\thepage}
 	\input{content}
 	\clearpage
 
 %%%%% Bibliography
-	\rhead{\nouppercase\leftmark}
+	\fancyhead[LE,RO]{\nouppercase\leftmark}
 	\printbibliography[heading=bibintoc]
-	\clearpage
+	\cleardoublepage
 %%%%% Appendix
-	\rhead{A  \ -- \ \nouppercase\leftmark}
+	\fancyhead[LE,RO]{A  \ -- \ \nouppercase\leftmark}
 	\input{appendix}
 \end{document}
