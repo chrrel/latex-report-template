@@ -1,5 +1,5 @@
 # LaTeX Template for Reports and Theses 
-This is a LaTeX template that can be used for reports and theses. An example PDF file can be found [here](report.pdf).
+This is a LaTeX template that can be used for reports and theses. An example PDF file can be found [here](report/report.pdf).
 
 ## Structure
 The template depends on the following files.
@@ -25,7 +25,7 @@ To compile the template to a PDF file, you can use the makefile in this reposito
 The option `isPrintVersion` can be changed in line 3 of *report.tex*. If it is set to true, all links in the generated PDF will be black, if it is set to false coloured links will be used.
 
 ## New Commands in this Template
-This template comes with new, non-standard LaTeX commands which are explained in this section. You can also find an example of them in the [PDF example](report.pdf).
+This template comes with new, non-standard LaTeX commands which are explained in this section. You can also find an example of them in the [PDF example](report/report.pdf).
 
 Add a source to a figure or listing with the `captionsource` command.
 
